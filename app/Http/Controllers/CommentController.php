@@ -9,6 +9,10 @@ use Auth;
 
 class CommentController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +21,6 @@ class CommentController extends Controller
     public function index()
     {
         //
-        return view('post/show');
     }
 
     /**
@@ -51,6 +54,7 @@ class CommentController extends Controller
             "posts_id" => $request['post_id'],
             "user_id" => Auth::user()->id
         ]);
+        
         $post = post::find($request['post_id']);
         $comments = comment::where('posts_id', $request['post_id'])->get();
         return view('post/show',compact('post'),compact('comments'));

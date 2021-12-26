@@ -18,8 +18,9 @@
               <div class="media border p-3 mb-3">
         <img src="{{ asset('adminlte/dist/img/user2-160x160.jpg') }}" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px;">
         <div class="media-body">
-          <h4><a style="color: black" href="{{ route('post.show',['post'=>$item->id]) }}">{{  $item->judul }}</a> <small><i>Posted on {{  $item->created_at }}</i></small></h4>
+          <h4><a style="color: black" href="{{ route('post.show',['post'=>$item->id]) }}">{{  $item->judul }}</a> </h4>
           <p>{{  $item->isi }}</p>
+          <small><i>Posted on {{  $item->created_at->diffForHumans() }}</i></small>
         </div>
       </div>
 

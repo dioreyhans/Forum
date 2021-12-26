@@ -4,10 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\post;
+use App\Models\category;
 use Auth;
 
 class DashboardController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,10 +21,10 @@ class DashboardController extends Controller
     public function index()
     {
         //
-        $id =Auth::user()->id;
-
-       $list = Post::where('user_id', $id)->get();
-
+        //$id =Auth::user()->id;
+       //$list = Post::where('user_id', $id)->get();
+       $user = Auth::user();
+       $list = $user->post;
         return view('dashboard/index', compact('list'));
     }
 
@@ -31,7 +36,8 @@ class DashboardController extends Controller
     public function create()
     {
         //
-        return view('dashboard/create');
+        $kategori = category::all();
+        return view('dashboard/create', compact('kategori'));
     }
 
     /**
@@ -50,11 +56,19 @@ class DashboardController extends Controller
             'isi' => 'required',
             'categories_id' => 'required',
         ]);
-        $dashboard = post::create([
+        // $dashboard = post::create([
+        //     "judul" => $request['judul'],
+        //     "isi" => $request['isi'],
+        //     "categories_id" => $request['categories_id'],
+        //     "user_id" => Auth::user()->id
+        // ]);
+
+        $user = Auth::user();
+        //$user->post()->save($dashboard);
+        $dashboard = $user->post()->create([
             "judul" => $request['judul'],
             "isi" => $request['isi'],
             "categories_id" => $request['categories_id'],
-            "user_id" => Auth::user()->id
         ]);
 
         return redirect('dashboard')->with('success', 'Data Berhasil Ditambahkan!');
@@ -85,8 +99,9 @@ class DashboardController extends Controller
     public function edit($id)
     {
         //
+        $kategori = category::all();
         $post = post::find($id);
-        return view('dashboard/edit',compact('post'));
+        return view('dashboard/edit',compact('post'), compact('kategori'));
     }
 
     /**

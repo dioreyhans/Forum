@@ -17,7 +17,7 @@
       <div class="media border p-3 mb-3">
         <img src="{{ asset('adminlte/dist/img/user2-160x160.jpg') }}" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px;">
         <div class="media-body">
-          <h4>{{  $post->judul }} <small><i>Posted on {{  $post->created_at }}</i></small></h4>
+          <h4>{{  $post->judul }} <small><i>Posted on {{  $post->created_at->diffForHumans() }}</i></small></h4>
           <p>{{  $post->isi }}</p>
         </div>
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
@@ -67,8 +67,9 @@
     <div class="media border p-3 mb-3">
       <img src="{{ asset('adminlte/dist/img/user2-160x160.jpg') }}" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width:60px;">
       <div class="media-body">
-        <h4>{{  $comment->user_id }} <small><i>Posted on {{  $post->created_at }}</i></small></h4>
+        <h4>{{  $comment->name }} </h4>
         <p>{{  $comment->isi }}</p>
+        <small><i>Commented on {{  $post->created_at->diffForHumans() }}</i></small>
       </div>
       @if ($comment->user_id == Auth::user()->id)
       <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editModal{{ $comment->id }}" data-toggle="tooltip" title="Edit">

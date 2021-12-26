@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\post;
 use App\Models\comment;
+use Auth;
 
 class PostController extends Controller
 {
@@ -21,6 +22,7 @@ class PostController extends Controller
     {
         //
         $list = post::all();
+        
         return view('post/index', compact('list'));
     }
 
@@ -55,7 +57,8 @@ class PostController extends Controller
     {
         //
         $post = post::find($id);
-        $comments = comment::where('posts_id', $id)->get();
+        //$comments = comment::where('posts_id', $id)->get();
+        $comments = comment::where('posts_id', $id)->join('users', 'comments.user_id', '=', 'users.id')->get();
         return view('post/show',compact('post'),compact('comments'));
     
         }

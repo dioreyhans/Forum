@@ -20,11 +20,12 @@
         @enderror
         <div class="form-group">
           <label for="categories_id">Kategori :</label>
-          <input type="text" class="form-control" name="categories_id" id="categories_id">
+          <select class="form-control" class="form-control" name="categories_id" id="categories_id" style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
+            @foreach ($kategori as $item)
+            <option data-select2-id="{{ $item->id }}" value="{{ $item->id }}">{{ $item->name }}</option>
+            @endforeach
+          </select>
         </div>
-        @error('categories_id')
-            <div class="alert alert-danger">{{ $message }}</div>
-        @enderror
         <div class="form-group">
           <label for="isi">Isi :</label>
           <textarea class="form-control" rows="5" name="isi" id="isi"></textarea>
