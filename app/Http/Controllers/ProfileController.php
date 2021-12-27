@@ -54,11 +54,12 @@ class ProfileController extends Controller
         $request->validate([
             'fullname' => 'required',
 
-            'image' => 'image|file|max:1024',
+            'umur' => 'required',
             'alamat' => 'required'
         ]);
             $profile = profile::create([
                 "fullname" => $request['fullname'],
+                "umur" => $request['umur'],
                 "alamat" => $request['alamat'],
                 "user_id" => Auth::user()->id
             ]);
@@ -110,12 +111,14 @@ class ProfileController extends Controller
         $request->validate([
             'fullname' => 'required',
             'email' => 'required',
+            'umur' => 'required',
             'alamat' => 'required'
         ]);
             $profile = profile::where("id",$id)
             ->update([
                 "fullname" => $request['fullname'],
                 "alamat" => $request['alamat'],
+                "umur" => $request['umur'],
                 "user_id" => Auth::user()->id
             ]);
         
