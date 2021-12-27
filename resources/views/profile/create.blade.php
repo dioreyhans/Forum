@@ -17,6 +17,8 @@
         <div class="row gutters m-3">
         <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
         <div class="card">
+          <form action="/profile" method="POST" enctype="multipart/form-data">
+            @csrf
           <div class="card-body">
             <div class="account-settings">
               <div class="user-profile">
@@ -25,13 +27,12 @@
                 </div>
               </div>
             </div>
-          </div>
+
         </div>
         </div>
         <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
         <div class="card">
-          <form action="/profile" method="POST">
-            @csrf
+          
           <div class="card-body">
                   <div class="row gutters">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
@@ -57,15 +58,6 @@
                     </div>
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                       <div class="form-group">
-                        <label for="umur">Age</label>
-                        <input type="text" class="form-control" name="umur" id="Umur" placeholder="Enter Age">
-                      </div>
-                      @error('umur')
-                          <div class="alert alert-danger">{{ $message }}</div>
-                      @enderror
-                    </div>
-                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                      <div class="form-group">
                         <label for="alamat">Address</label>
                         <input type="text" class="form-control" name="alamat" id="address" placeholder="Enter Address">
                       </div>
@@ -73,6 +65,15 @@
                           <div class="alert alert-danger">{{ $message }}</div>
                       @enderror
                     </div>
+                  </div>
+                  <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="form-group">
+                      <label for="umur">Age</label>
+                      <input type="text" class="form-control" name="umur" id="Umur" placeholder="Enter Age">
+                    </div>
+                    @error('umur')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                   </div>
                   <div class="row gutters">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">

@@ -25,6 +25,7 @@
                 </div>
               </div>
             </div>
+           
           </div>
         </div>
         </div>
@@ -54,22 +55,23 @@
               </div>
               <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                 <div class="form-group">
-                  <label for="umur">Umur</label>
-                  @if ($profile == null)
-                      
-                  @else
-                  <h5>{{ $profile->umur }}</h5>
-                  @endif
-                </div>
-              </div>
-              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                <div class="form-group">
                   <label for="alamat">Address</label>
                   @if ($profile == null)
                   @else
                   <h5>{{ $profile->alamat }}</h5>
                   @endif
                   
+                </div>
+              </div>
+              
+              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                <div class="form-group">
+                  <label for="umur">Umur</label>
+                  @if ($profile == null)
+                      
+                  @else
+                  <h5>{{ $profile->umur }}</h5>
+                  @endif
                 </div>
               </div>
             </div>

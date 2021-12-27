@@ -71,7 +71,7 @@ class DashboardController extends Controller
             "categories_id" => $request['categories_id'],
         ]);
 
-        return redirect('dashboard')->with('success', 'Data Berhasil Ditambahkan!');
+        return redirect('dashboard')->with('toast_success', 'Data Berhasil Ditambahkan');
     
     }
 
@@ -126,7 +126,7 @@ class DashboardController extends Controller
             "categories_id" => $request['categories_id'],
             "user_id" => Auth::user()->id
         ]);
-        return redirect('dashboard')->with('success', 'Data Berhasil Diubah!');
+        return redirect('dashboard')->with('toast_success', 'Data Berhasil Diubah!');
     
     }
 
@@ -140,7 +140,7 @@ class DashboardController extends Controller
     {
         //
         $delete=post::destroy($id);
-        return redirect('dashboard')->with('success', 'Data Berhasil Dihapus!');
+        return redirect('dashboard')->with('toast_success', 'Data Berhasil Dihapus!');
     
     }
 }

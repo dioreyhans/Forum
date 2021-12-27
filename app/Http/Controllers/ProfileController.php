@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\profile;
 use App\Models\user;
 use Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 class ProfileController extends Controller
 {
 
@@ -52,17 +53,19 @@ class ProfileController extends Controller
 
         $request->validate([
             'fullname' => 'required',
-            'umur' => 'required',
+
+            'image' => 'image|file|max:1024',
             'alamat' => 'required'
         ]);
-        $profile = profile::create([
-            "fullname" => $request['fullname'],
-            "umur" => $request['umur'],
-            "alamat" => $request['alamat'],
-            "user_id" => Auth::user()->id
-        ]);
+            $profile = profile::create([
+                "fullname" => $request['fullname'],
+                "alamat" => $request['alamat'],
+                "user_id" => Auth::user()->id
+            ]);
+        
+        
 
-        return redirect('profile')->with('success', 'Data Berhasil Diubah!');
+        return redirect('profile')->with('toast_success', 'Data Berhasil Diubah!');
     }
 
     /**
@@ -103,26 +106,28 @@ class ProfileController extends Controller
     public function update(Request $request, $id)
     {
         //
+        
         $request->validate([
             'fullname' => 'required',
             'email' => 'required',
-            'umur' => 'required',
             'alamat' => 'required'
         ]);
-        $profile = profile::where("id",$id)
-        ->update([
-            "fullname" => $request['fullname'],
-            "umur" => $request['umur'],
-            "alamat" => $request['alamat'],
-            "user_id" => Auth::user()->id
-        ]);
+            $profile = profile::where("id",$id)
+            ->update([
+                "fullname" => $request['fullname'],
+                "alamat" => $request['alamat'],
+                "user_id" => Auth::user()->id
+            ]);
+        
+        
 
         $profile = user::where("id",Auth::user()->id)
         ->update([
             "email" => $request['email']
         ]);
+       
 
-        return redirect('profile')->with('success', 'Data Berhasil Diubah!');
+        return redirect('profile')->with('toast_success', 'Data Berhasil Diubah!');
     
     }
 

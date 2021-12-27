@@ -17,6 +17,9 @@
         <div class="row gutters m-3">
         <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
         <div class="card">
+          <form action="/profile/{{$profile->id}}" method="POST" enctype="multipart/form-data">
+            @csrf
+            @method('PUT')
           <div class="card-body">
             <div class="account-settings">
               <div class="user-profile">
@@ -25,14 +28,14 @@
                 </div>
               </div>
             </div>
+
           </div>
         </div>
         </div>
         <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
         <div class="card">
-          <form action="/profile/{{$profile->id}}" method="POST">
-            @csrf
-            @method('PUT')
+          
+            
           <div class="card-body">
                   <div class="row gutters">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
@@ -58,19 +61,19 @@
                     </div>
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                       <div class="form-group">
-                        <label for="umur">Age</label>
-                        <input type="text" class="form-control" name="umur" id="Umur" placeholder="Enter Age" value="{{ old('umur', $profile->umur) }}">
+                        <label for="alamat">Address</label>
+                        <input type="text" class="form-control" name="alamat" id="address" placeholder="Enter Address" value="{{ old('alamat', $profile->alamat) }}">
                       </div>
-                      @error('umur')
+                      @error('alamat')
                           <div class="alert alert-danger">{{ $message }}</div>
                       @enderror
                     </div>
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                       <div class="form-group">
-                        <label for="alamat">Address</label>
-                        <input type="text" class="form-control" name="alamat" id="address" placeholder="Enter Address" value="{{ old('alamat', $profile->alamat) }}">
+                        <label for="umur">Age</label>
+                        <input type="text" class="form-control" name="umur" id="Umur" placeholder="Enter Age" value="{{ old('umur', $profile->umur) }}">
                       </div>
-                      @error('alamat')
+                      @error('umur')
                           <div class="alert alert-danger">{{ $message }}</div>
                       @enderror
                     </div>

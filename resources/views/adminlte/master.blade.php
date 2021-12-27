@@ -43,7 +43,7 @@
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
-
+@include('sweetalert::alert')
 <!-- jQuery -->
 <script src="{{ asset('adminlte/plugins/jquery/jquery.min.js') }}"></script>
 <!-- Bootstrap 4 -->
@@ -52,6 +52,7 @@
 <script src="{{ asset('adminlte/dist/js/adminlte.min.js') }}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('adminlte/dist/js/demo.js') }}"></script>
+
 @stack('script')
 <script src="{{ asset('adminlte/plugins/datatables/jquery.dataTables.js') }}"></script>
 <script src="{{ asset('adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.js') }}"></script>
@@ -60,5 +61,7 @@
     $("#example1").DataTable();
   });
 </script>
+
+
 </body>
 </html>
