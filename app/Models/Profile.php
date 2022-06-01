@@ -10,4 +10,8 @@ class Profile extends Model
     use HasFactory;
     protected $table = 'profiles';
     protected $guarded = [];
+
+    public function users(){
+        return $this->belongsTo('App\Models\User');
+    }
 }
