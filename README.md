@@ -1,12 +1,7 @@
 <h1>Final Project</h1>
 <hr>
-<h2>Kelompok 13</h2>
-<hr>
-<h2>Anggota Kelompok</h2>
-<hr>
 <ul>
   <li>Muhammad Dio Reyhans</li>
-  <li>Ilma Ninda Erwin</li>
 </ul>
 <h2>Tema Project</h2>
 <hr>
